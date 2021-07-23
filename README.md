@@ -8,8 +8,9 @@ Criar um programa com duas características:
 
 ## To do
 
-- [ ] Escolher os métodos de ordenação
-- [ ] Criar os arquivos .c e .h para cada um
+- [ X ] Escolher os métodos de ordenação
+- [ X ] Criar os arquivos .c e .h para cada um, contendo a implementação do sort crescente e decrescente
+- [ ] Adicionar a contagem de comparações para cada método
 - [ ] Criar função que retorne uma lista de numeros aleatórios
 - [ ] Aprender a contar o tempo de duração de uma função
 - [ ] Criar o menu de escolha dos métodos
