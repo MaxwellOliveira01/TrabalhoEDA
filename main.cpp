@@ -1,23 +1,17 @@
-#include "metodos.h"
-
-#include <iostream>
-#include <vector>
+#include "metodosOrdenacao.h"
+#include "geraNumeros.h"
 
 using namespace std;
 
 int main(){
 
-    int n;
-    cin >> n;
-    vector<int> arr(n);
-    for(auto &x: arr)
-        cin >> x;
+    int N;
+    cin >> N;
     
-    shellSort(arr,0);
-
-    for(auto x: arr)
-        cout << x << " ";
-    cout << endl;
-
+    for(int i = 0; i < 10; i++){
+        vector<int> tmp = ordemAleatoria(N);
+        mostraVetor(tmp,0);
+    }
+    
     return 0;
 }

@@ -1,19 +1,15 @@
-#include "metodos.h"
+#include "metodosOrdenacao.h"
 
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-/*implementar
-bubble
-insertion
-merge
-shell*/
-
-void show(vector<int>& a){
+void mostraVetor(vector<int>& a, int quebra){
     for(auto x: a)
         cout << x << " ";
-    cout << endl << endl;
+    cout << endl;
+    if(quebra) cout << endl;
 }
 
 vector<int> merge(vector<int>& a, vector<int>& b, int decres){
@@ -22,7 +18,7 @@ vector<int> merge(vector<int>& a, vector<int>& b, int decres){
 
     while(pa < (int)a.size() && pb < (int)b.size()){
         
-        if(decres){
+        if(decres == 0){
             
             if(a[pa] < b[pb]){
                 aux[p] = a[pa++];
@@ -110,7 +106,6 @@ void insertionSort(vector<int>&v, int decres){
         v[j + 1] = aux;
     }
 }
-
 
 void shellSort(vector<int>&v, int decres){
 
