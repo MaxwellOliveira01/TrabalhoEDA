@@ -13,7 +13,7 @@ Criar um programa com duas características:
 - [ ] Adicionar a contagem de comparações para cada método
 - [x] Criar função que retorne uma lista de numeros aleatórios
 - [x] Adicionar Makefile
-- [ ] Aprender a contar o tempo de duração de uma função
+- [x] Aprender a contar o tempo de duração de uma função
 - [ ] Criar o menu de escolha dos métodos
 - [ ] Formatar a apresentação dos dados impressos na tela
 - [ ] Criar o menu da seção educativa
