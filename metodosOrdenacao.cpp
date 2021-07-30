@@ -12,7 +12,7 @@ void mostraVetor(vector<int>& a, int quebra){
     if(quebra) cout << endl;
 }
 
-vector<int> merge(vector<int>& a, vector<int>& b, int decres){
+vector<int> merge(vector<int>& a, vector<int>& b, int decres, int& cont){
     vector<int> aux((int)a.size() + (int)b.size());
     int pa = 0, pb = 0, p = 0;
 
@@ -35,23 +35,28 @@ vector<int> merge(vector<int>& a, vector<int>& b, int decres){
             }
 
         }
+
+        cont++;
         p++;
+
     }
 
     //adiciona os que restaram
 
     while(pa < (int)a.size()){
         aux[p++] = a[pa++];
+        cont++;
     }
     
     while(pb < (int)b.size()){
         aux[p++] = b[pb++];
+        cont++;
     }
 
     return aux;
 }
 
-void mergeSort(vector<int>& v, int decres){
+void mergeSort(vector<int>& v, int decres, int& cont){
 
     if((int)v.size() <= 1) //caso base, já está ordenado
          return;
@@ -61,12 +66,12 @@ void mergeSort(vector<int>& v, int decres){
     
     vector<int> esq(v.begin(), v.begin() + m); //pega [0,m-1]
     vector<int> dir(v.begin() + m, v.end()); //pega [m,r]
-    mergeSort(esq, decres); //ordena esquerda
-    mergeSort(dir, decres); //ordena direita
-    v = merge(esq, dir, decres); //pega o merge dos dois
+    mergeSort(esq, decres, cont); //ordena esquerda
+    mergeSort(dir, decres, cont); //ordena direita
+    v = merge(esq, dir, decres, cont); //pega o merge dos dois
 }
 
-void bubbleSort(vector<int>& v, int decres){
+void bubbleSort(vector<int>& v, int decres, int& cont){
 
     for(int r = (int)v.size(); r >= 0; r--){
         int fim = 0;
@@ -74,11 +79,13 @@ void bubbleSort(vector<int>& v, int decres){
             if(decres){
                 if(v[l] < v[l+1]){
                     swap(v[l], v[l+1]);
+                    cont++;
                     fim++;
                 }
             } else {
                 if(v[l] > v[l+1]){
                     swap(v[l], v[l+1]);
+                    cont++;
                     fim++;
                 }
             }
@@ -90,24 +97,26 @@ void bubbleSort(vector<int>& v, int decres){
 
 }
 
-void insertionSort(vector<int>&v, int decres){
+void insertionSort(vector<int>&v, int decres, int& cont){
     int n = (int)v.size();
     for(int i = 1; i < n; i++){
         int j, aux = v[i];
         if(decres){
             for(j = i - 1; j >= 0 && v[j] < aux; j--){
                 v[j+1] = v[j];
+                cont++;
             }
         } else {
             for(j = i - 1; j >= 0 && v[j] > aux; j--){
                 v[j+1] = v[j];
+                cont++;
             }
         }
         v[j + 1] = aux;
     }
 }
 
-void shellSort(vector<int>&v, int decres){
+void shellSort(vector<int>&v, int decres, int& cont){
 
     /*Implementação baseada no código do geeksforgeeks, segue o link
         https://www.geeksforgeeks.org/shellsort/
@@ -128,12 +137,14 @@ void shellSort(vector<int>&v, int decres){
    
                 for(j = i; j >= gap && v[j-gap] < aux; j -= gap){
                     v[j] = v[j - gap];
+                    cont++;
                 }
 
             } else {
                 
                 for(j = i; j >= gap && v[j-gap] > aux; j -= gap){
                     v[j] = v[j - gap];
+                    cont++;
                 }
 
             }

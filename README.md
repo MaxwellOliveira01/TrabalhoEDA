@@ -10,7 +10,7 @@ Criar um programa com duas características:
 
 - [x] Escolher os métodos de ordenação
 - [x] Criar os arquivos .c e .h para cada um, contendo a implementação do sort crescente e decrescente
-- [ ] Adicionar a contagem de comparações para cada método
+- [x] Adicionar a contagem de comparações para cada método
 - [x] Criar função que retorne uma lista de numeros aleatórios
 - [x] Adicionar Makefile
 - [x] Aprender a contar o tempo de duração de uma função
