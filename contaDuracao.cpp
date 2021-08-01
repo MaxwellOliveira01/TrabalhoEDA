@@ -7,7 +7,7 @@
 using namespace std;
 using namespace std::chrono;
 
-int getTime(vector<int> arr, int metodo, int& cont){
+int getTime(vector<int> arr, int metodo, long long& cont){
 
     auto start = high_resolution_clock::now();
     
@@ -26,18 +26,18 @@ int getTime(vector<int> arr, int metodo, int& cont){
     return (int)duration.count();
 }
 
-int getTimeMerge(vector<int> arr, int& cont){
+int getTimeMerge(vector<int> arr, long long& cont){
     return getTime(arr, 1, cont);
 }
 
-int getTimeShell(vector<int> arr, int& cont){
+int getTimeShell(vector<int> arr, long long& cont){
     return getTime(arr,2, cont);
 }
 
-int getTimeInsertion(vector<int> arr, int& cont){
+int getTimeInsertion(vector<int> arr, long long& cont){
     return getTime(arr,3, cont);
 }
 
-int getTimeBubble(vector<int> arr, int& cont){
+int getTimeBubble(vector<int> arr, long long& cont){
     return getTime(arr,4, cont);
 }

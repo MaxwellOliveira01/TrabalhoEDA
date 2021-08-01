@@ -12,66 +12,15 @@ void mostraVetor(vector<int>& a, int quebra){
     if(quebra) cout << endl;
 }
 
-vector<int> merge(vector<int>& a, vector<int>& b, int decres, int& cont){
-    vector<int> aux((int)a.size() + (int)b.size());
-    int pa = 0, pb = 0, p = 0;
-
-    while(pa < (int)a.size() && pb < (int)b.size()){
-        
-        if(decres == 0){
-            
-            if(a[pa] < b[pb]){
-                aux[p] = a[pa++];
-            } else {
-                aux[p] = b[pb++];
-            }
-
-        } else {
-
-            if(a[pa] > b[pb]){
-                aux[p] = a[pa++];
-            } else {
-                aux[p] = b[pb++];
-            }
-
-        }
-
-        cont++;
-        p++;
-
-    }
-
-    //adiciona os que restaram
-
-    while(pa < (int)a.size()){
-        aux[p++] = a[pa++];
-        cont++;
-    }
-    
-    while(pb < (int)b.size()){
-        aux[p++] = b[pb++];
-        cont++;
-    }
-
-    return aux;
+vector<int> merge(vector<int>& a, ll& cont){
+    //IMPLEMENTAR denovo
 }
 
-void mergeSort(vector<int>& v, int decres, int& cont){
-
-    if((int)v.size() <= 1) //caso base, já está ordenado
-         return;
-
-    int l = 0, r = (int)v.size();
-    int m = l + (r-l) / 2; //evita overflow
-    
-    vector<int> esq(v.begin(), v.begin() + m); //pega [0,m-1]
-    vector<int> dir(v.begin() + m, v.end()); //pega [m,r]
-    mergeSort(esq, decres, cont); //ordena esquerda
-    mergeSort(dir, decres, cont); //ordena direita
-    v = merge(esq, dir, decres, cont); //pega o merge dos dois
+void mergeSort(vector<int>& v, long long& cont){
+    //IMPLEMENTAR denovo
 }
 
-void bubbleSort(vector<int>& v, int decres, int& cont){
+void bubbleSort(vector<int>& v, int decres, long long& cont){
 
     for(int r = (int)v.size(); r >= 0; r--){
         int fim = 0;
@@ -97,7 +46,7 @@ void bubbleSort(vector<int>& v, int decres, int& cont){
 
 }
 
-void insertionSort(vector<int>&v, int decres, int& cont){
+void insertionSort(vector<int>&v, int decres, long long& cont){
     int n = (int)v.size();
     for(int i = 1; i < n; i++){
         int j, aux = v[i];
@@ -116,7 +65,7 @@ void insertionSort(vector<int>&v, int decres, int& cont){
     }
 }
 
-void shellSort(vector<int>&v, int decres, int& cont){
+void shellSort(vector<int>&v, int decres, long long& cont){
 
     /*Implementação baseada no código do geeksforgeeks, segue o link
         https://www.geeksforgeeks.org/shellsort/

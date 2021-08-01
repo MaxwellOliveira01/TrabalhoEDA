@@ -14,8 +14,8 @@ Criar um programa com duas características:
 - [x] Criar função que retorne uma lista de numeros aleatórios
 - [x] Adicionar Makefile
 - [x] Aprender a contar o tempo de duração de uma função
-- [ ] Criar o menu de escolha dos métodos
-- [ ] Formatar a apresentação dos dados impressos na tela
+- [x] Criar o menu de escolha dos métodos
+- [x] Formatar a apresentação dos dados impressos na tela
 - [ ] Criar o menu da seção educativa
 - [ ] Criar arquivos .txt com o texto explicativo de cada método
 - [ ] Criar menu principal capaz de unir as duas seções.
