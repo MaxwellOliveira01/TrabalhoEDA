@@ -11,9 +11,8 @@ using ll = long long;
 using namespace std;
 
 int main(){
-
     cout << "Bem vindo ao módulo de testes!\nVamos iniciar com algumas perguntas\n";
-    vector<string> names = {"MergeSort", "ShellSort","InsertionSort","BubbleSort"};
+    vector<string> names = {"BubbleSort","InsertionSort","ShellSort","MergeSort"};
     string recebe;
     vector<int> skip(4, 1);
 
@@ -32,26 +31,31 @@ int main(){
 
     cout << "Quantos elementos deseja utilizar? Insira um numero no intervalo [0, 30000]\n";
     int N; cin >> N;
-    N = max(0, N); N = min(30000, N);
+    N = max(0, N); 
+    N = min(30000, N);
+
     cout << "\n\nQuase tudo pronto!\nDeseja usar quantas repetições de " << N << " elemento(s) para fazer a média?\n";
     int qnt; cin >> qnt;
     
     cout << "\n\nPor fim, em que ordem deseja que os numeros gerados estejam em que ordem?\n1 - Crescente\n2 - Decrescente\n3 - Aleatoria\n\n";
-
     int ordem; cin >> ordem;
 
-    vector< pair<int,ll> > results(4);
+    vector< pair<int,ll> > results(4, {0,0});
 
     for(int i = 0; i < qnt; i++){
-        vector<int> arr;
-        
-        if(qnt == 1) arr = ordemCrescente(N);
-        else if(qnt == 2) arr = ordemDecrescente(N);
-        else arr = ordemAleatoria(N);
+        vector< vector<int> > arr(4);
+
+        if(qnt == 1) arr[0] = ordemCrescente(N);
+        else if(qnt == 2) arr[0] = ordemDecrescente(N);
+        else arr[0] = ordemAleatoria(N);
+
+        arr[1] = arr[0];
+        arr[2] = arr[0];
+        arr[3] = arr[0];
 
         for(int j = 0; j < 4; j++){
             if(!skip[j]) continue;
-            results[j].ff += getTime(arr,j,results[j].ss);
+            results[j].ff += getTime(arr[j],j,results[j].ss);
         }
         
     }
@@ -62,7 +66,7 @@ int main(){
 
     for(int i = 0; i < 4; i++){
         if(!skip[i]) continue;
-        cout << "Ao todo, o " << names[i] << " levou " << results[i].ff << " ms e fez " << results[i].ss << " comparações\n";
+        cout << "Ao todo o " << names[i] << " levou " << results[i].ff << " ms e fez " << results[i].ss << " comparações\n";
     }
 
     return 0;

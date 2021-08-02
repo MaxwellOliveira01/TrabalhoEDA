@@ -5,8 +5,8 @@ using namespace std;
 using ll = long long;
 
 /*Ordena o array na ordem crescente ou decrescente usando o mergeSort*/
-vector<int> merge(vector<int>& a, vector<int>& b, int decres, ll& cont);
-void mergeSort(vector<int>& v, int decres, ll& cont);
+void merge(vector<int>& a, int ini, int meio, int fim, ll& cont);
+void mergeSort(vector<int>& v, int ini, int fim, ll& cont);
 
 /*Ordena o array na ordem crescente ou decrescente usando o bubbleSort*/
 void bubbleSort(vector<int>& v, int decres, ll& cont);

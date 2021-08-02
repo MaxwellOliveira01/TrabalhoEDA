@@ -12,12 +12,49 @@ void mostraVetor(vector<int>& a, int quebra){
     if(quebra) cout << endl;
 }
 
-vector<int> merge(vector<int>& a, ll& cont){
-    //IMPLEMENTAR denovo
+void merge(vector<int>& a, int ini, int meio, int fim, ll& cont){
+    vector<int> esq(meio - ini + 1, 0);
+    vector<int> dir(fim - meio, 0);
+
+    for(int i = 0; i < (int)esq.size(); i++){
+        esq[i] = a[ini + i];
+    }
+
+    for(int i = 0; i < (int)dir.size(); i++){
+        dir[i] = a[meio + 1 + i]; //+1 pq o meio está no outro array
+    }
+
+    int p = 0, pesq = 0, pdir = 0;
+
+    while(pesq < (int)esq.size() && pdir < (int)dir.size()){
+
+        if(esq[pesq] < dir[pdir]){
+            a[ini++] = esq[pesq++];
+        } else {
+            a[ini++] = dir[pdir++];
+        }
+
+        cont++;
+    }
+
+    while(pesq < (int)esq.size()){
+        a[ini++] = esq[pesq++];
+    }
+
+    while(pdir < (int)dir.size()){
+        a[ini++] = dir[pdir++];
+    }
 }
 
-void mergeSort(vector<int>& v, long long& cont){
-    //IMPLEMENTAR denovo
+void mergeSort(vector<int>& v, int ini, int fim, long long& cont){
+    if(ini >= fim) return; //caso base
+    int m = ini + (fim - ini)/2;
+    //ordena as duas partes
+    mergeSort(v,ini,m,cont);
+    mergeSort(v,m+1,fim,cont);
+    //junta
+    merge(v,ini,m,fim,cont);
+
 }
 
 void bubbleSort(vector<int>& v, int decres, long long& cont){
@@ -67,12 +104,16 @@ void insertionSort(vector<int>&v, int decres, long long& cont){
 
 void shellSort(vector<int>&v, int decres, long long& cont){
 
-    /*Implementação baseada no código do geeksforgeeks, segue o link
+    /*
+    Implementação baseada no código do geeksforgeeks, segue o link
         https://www.geeksforgeeks.org/shellsort/
     */
 
+    /*
+    usando a tabela de gap's do link https://en.wikipedia.org/wiki/Shellsort#Gap_sequences
+    usei a de 2^k-1 para manter a complexidade em O(N^(3/2))*/
+
     for(int k = 30; k > 0; k--){
-        //o gap é 2^k-1 pra manter a O(n^(3/2))
 
         if(1 << k - 1 > (int)v.size())
             continue;
