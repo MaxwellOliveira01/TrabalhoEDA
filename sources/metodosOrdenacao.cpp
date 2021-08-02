@@ -1,4 +1,4 @@
-#include "metodosOrdenacao.h"
+#include "../headers/metodosOrdenacao.h"
 
 #include <iostream>
 #include <vector>

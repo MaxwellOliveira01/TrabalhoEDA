@@ -1,8 +1,8 @@
 #include <chrono>
 #include <vector>
 
-#include "contaDuracao.h"
-#include "metodosOrdenacao.h"
+#include "../headers/contaDuracao.h"
+#include "../headers/metodosOrdenacao.h"
 
 using namespace std;
 using namespace std::chrono;

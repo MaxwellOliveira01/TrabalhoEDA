@@ -5,9 +5,15 @@
 #include <chrono>
 #include <random>
 
-#include "geraNumeros.h"
+#include "../headers/geraNumeros.h"
 
 using namespace std;
+
+vector<int> gerador(int N, int ordem){
+    if(ordem == 1) return ordemCrescente(N);
+    else if(ordem == 2) return ordemDecrescente(N);
+    return ordemAleatoria(N);
+}
 
 vector<int> ordemCrescente(int N){
     vector<int> arr(N);

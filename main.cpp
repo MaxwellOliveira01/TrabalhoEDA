@@ -1,8 +1,7 @@
 #include <iostream>
-#include <unistd.h>
 
-#include "contaDuracao.h"
-#include "geraNumeros.h"
+#include "headers/contaDuracao.h"
+#include "headers/geraNumeros.h"
 
 #define ff first
 #define ss second
@@ -11,62 +10,63 @@ using ll = long long;
 using namespace std;
 
 int main(){
-    cout << "Bem vindo ao módulo de testes!\nVamos iniciar com algumas perguntas\n";
     vector<string> names = {"BubbleSort","InsertionSort","ShellSort","MergeSort"};
-    string recebe;
-    vector<int> skip(4, 1);
+    vector< pair<int,ll> > results(4, {0,0}); // tempo, quantidade de comparações
+    vector< vector<int> > arr(4); //guarda os numeros a serem ordenados pelos métodos
+    vector<int> useIt(4, 1); // terá 1 na posição i se o usuário quer usar o método i
+    string recebe; //recebe input
+    int N, qnt, ordem; //variaveis para salvar os valores digitados
 
+    cout << "Bem vindo ao módulo de testes!\nVamos iniciar com algumas perguntas\n";
     cout << "Responda as perguntas a seguir com Sim/sim/s, caso a resposta seja afirmativa.\n\n";
-
-    sleep(1);
-
-    for(int i = 0; i < 4; i++){
-        cout << "Deseja utilizar o método " << names[i] << "? ";
-        cin >> recebe;
-        skip[i] = ((recebe == "Sim") || (recebe == "sim") || (recebe == "s"));
-    }
-    cout << "\n";
-
-    sleep(1);
-
-    cout << "Quantos elementos deseja utilizar? Insira um numero no intervalo [0, 30000]\n";
-    int N; cin >> N;
-    N = max(0, N); 
-    N = min(30000, N);
-
-    cout << "\n\nQuase tudo pronto!\nDeseja usar quantas repetições de " << N << " elemento(s) para fazer a média?\n";
-    int qnt; cin >> qnt;
     
-    cout << "\n\nPor fim, em que ordem deseja que os numeros gerados estejam em que ordem?\n1 - Crescente\n2 - Decrescente\n3 - Aleatoria\n\n";
-    int ordem; cin >> ordem;
-
-    vector< pair<int,ll> > results(4, {0,0});
-
-    for(int i = 0; i < qnt; i++){
-        vector< vector<int> > arr(4);
-
-        if(qnt == 1) arr[0] = ordemCrescente(N);
-        else if(qnt == 2) arr[0] = ordemDecrescente(N);
-        else arr[0] = ordemAleatoria(N);
-
-        arr[1] = arr[0];
-        arr[2] = arr[0];
-        arr[3] = arr[0];
-
-        for(int j = 0; j < 4; j++){
-            if(!skip[j]) continue;
-            results[j].ff += getTime(arr[j],j,results[j].ss);
+    {    //recebendo os métodos desejados
+        for(int i = 0; i < 4; i++){
+            cout << "Deseja utilizar o método " << names[i] << "? ";
+            cin >> recebe;
+            useIt[i] = ((recebe == "Sim") || (recebe == "sim") || (recebe == "s"));
         }
-        
+        cout << "\n";
+    }
+    
+    {   //recebendo a quantidade de elementos
+        cout << "Quantos elementos deseja utilizar? Insira um numero no intervalo [0, 30000]\n";
+        cin >> N;
+        N = max(0, N); 
+        N = min(30000, N);
     }
 
-    cout << "\n";
+    {   //recebendo a quantidade de repetições
+        cout << "\nQuase tudo pronto!\nDeseja usar quantas repetições de " << N << " elemento(s) para fazer a média?\n";
+        cin >> qnt;
+        qnt = max(1, qnt);
+        qnt = min(10, qnt);
+    }
 
-    cout << "A seguir os resultados obtidos ao ordenar " << qnt << " array(s) de tamanho " << N << "\n\n";
+    {   //recebendo a ordem dos valores
+        cout << "\nPor fim, em que ordem deseja que os numeros gerados estejam em que ordem?\n1 - Crescente\n2 - Decrescente\n3 - Aleatoria\n";
+        cin >> ordem;
+        ordem = max(1, ordem);
+        ordem = min(3, ordem);
+    }
 
-    for(int i = 0; i < 4; i++){
-        if(!skip[i]) continue;
-        cout << "Ao todo o " << names[i] << " levou " << results[i].ff << " ms e fez " << results[i].ss << " comparações\n";
+    {    //gera N numeros, ordena por cada método e salva os resultados.
+        for(int i = 0; i < qnt; i++){
+            arr[0] = gerador(N, qnt);
+            arr[1] = arr[0]; arr[2] = arr[0]; arr[3] = arr[0];
+            for(int j = 0; j < 4; j++){
+                if(!useIt[j]) continue;
+                results[j].ff += getTime(arr[j],j,results[j].ss);
+            }
+        }
+    }
+    
+    {   //coloca os dados na tela
+        cout << "\nA seguir os resultados obtidos ao ordenar " << qnt << " array(s) de tamanho " << N << "\n";
+        for(int i = 0; i < 4; i++){
+            if(!useIt[i]) continue;
+            cout << "Ao todo o " << names[i] << " levou " << results[i].ff << " ms e fez " << results[i].ss << " comparações\n";
+        }
     }
 
     return 0;

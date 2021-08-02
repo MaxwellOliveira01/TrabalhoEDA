@@ -4,14 +4,14 @@ main: main.o metodosOrdenacao.o geraNumeros.o contaDuracao.o
 main.o: main.cpp
 	g++ -c main.cpp
 
-geraNumeros.o: geraNumeros.cpp
-	g++ -c geraNumeros.cpp
+geraNumeros.o: sources/geraNumeros.cpp
+	g++ -c sources/geraNumeros.cpp
 
-metodosOrdenacao.o: metodosOrdenacao.cpp
-	g++ -c metodosOrdenacao.cpp
+metodosOrdenacao.o: sources/metodosOrdenacao.cpp
+	g++ -c sources/metodosOrdenacao.cpp
 
-contaDuracao.o: contaDuracao.cpp
-	g++ -c contaDuracao.cpp
+contaDuracao.o: sources/contaDuracao.cpp
+	g++ -c sources/contaDuracao.cpp
 
 clean:
 	rm main.o geraNumeros.o metodosOrdenacao.o contaDuracao.o
