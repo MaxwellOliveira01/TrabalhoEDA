@@ -2,12 +2,17 @@
 
 #include "headers/contaDuracao.h"
 #include "headers/geraNumeros.h"
+#include "headers/metodosOrdenacao.h"
 
 #define ff first
 #define ss second
 
 using ll = long long;
 using namespace std;
+
+ll ceil(ll a, ll b){
+    return (a+b-1) / b;
+}
 
 int main(){
     vector<string> names = {"BubbleSort","InsertionSort","ShellSort","MergeSort"};
@@ -52,7 +57,7 @@ int main(){
 
     {    //gera N numeros, ordena por cada método e salva os resultados.
         for(int i = 0; i < qnt; i++){
-            arr[0] = gerador(N, qnt);
+            arr[0] = gerador(N, ordem);
             arr[1] = arr[0]; arr[2] = arr[0]; arr[3] = arr[0];
             for(int j = 0; j < 4; j++){
                 if(!useIt[j]) continue;
@@ -60,12 +65,12 @@ int main(){
             }
         }
     }
-    
+
     {   //coloca os dados na tela
         cout << "\nA seguir os resultados obtidos ao ordenar " << qnt << " array(s) de tamanho " << N << "\n";
         for(int i = 0; i < 4; i++){
             if(!useIt[i]) continue;
-            cout << "Ao todo o " << names[i] << " levou " << results[i].ff << " ms e fez " << results[i].ss << " comparações\n";
+            cout << "Ao todo o " << names[i] << " usou " << ceil(results[i].ff,qnt) << " ms, fazendo " << ceil(results[i].ss,qnt) << " comparações\n";
         }
     }
 

@@ -37,6 +37,9 @@ void merge(vector<int>& a, int ini, int meio, int fim, ll& cont){
         cont++;
     }
 
+    /*os dois while's a seguir nao há a incrementação de "cont"
+    pois não há comparação.*/
+
     while(pesq < (int)esq.size()){
         a[ini++] = esq[pesq++];
     }
@@ -44,6 +47,8 @@ void merge(vector<int>& a, int ini, int meio, int fim, ll& cont){
     while(pdir < (int)dir.size()){
         a[ini++] = dir[pdir++];
     }
+
+
 }
 
 void mergeSort(vector<int>& v, int ini, int fim, long long& cont){
@@ -111,18 +116,18 @@ void shellSort(vector<int>&v, int decres, long long& cont){
 
     /*
     usando a tabela de gap's do link https://en.wikipedia.org/wiki/Shellsort#Gap_sequences
-    usei a de 2^k-1 para manter a complexidade em O(N^(3/2))*/
+    usei a de 2^k-1 para manter a complexidade em O(N^(3/2))
+    */
 
-    for(int k = 30; k > 0; k--){
+    for(ll k = 30; k > 0; k--){
 
-        if(1 << k - 1 > (int)v.size())
-            continue;
-        
+        int gap = (1<<k) - 1;
+
         //a seguir é a mesma ideia do insertion sort
         //só que ao invés de diminuir de 1 em 1 diminue o gap
 
-        for(int i = (1 << k) - 1; i < (int)v.size(); i++){
-            int aux = v[i], j, gap = ((1 << k) - 1);
+        for(int i = gap - 1; i < (int)v.size(); i++){
+            int aux = v[i], j;
             if(decres){
    
                 for(j = i; j >= gap && v[j-gap] < aux; j -= gap){
@@ -141,6 +146,4 @@ void shellSort(vector<int>&v, int decres, long long& cont){
             v[j] = aux;
         }
     }
-
 }
-
