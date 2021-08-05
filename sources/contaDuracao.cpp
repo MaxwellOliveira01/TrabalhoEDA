@@ -12,11 +12,11 @@ int getTime(vector<int>& arr, int metodo, long long& cont){
     auto start = high_resolution_clock::now();
     
     if(metodo == 0) 
-        bubbleSort(arr, 0, cont);
+        bubbleSort(arr, cont);
     else if(metodo == 1)
-        insertionSort(arr,0,cont);
+        insertionSort(arr,cont);
     else if(metodo == 2)
-        shellSort(arr,0,cont);
+        shellSort(arr,cont);
     else
         mergeSort(arr,0,(int)arr.size() - 1, cont);
     
