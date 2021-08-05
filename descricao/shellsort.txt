@@ -1,0 +1,32 @@
+É um algoritmo baseado no InsertionSort.
+Só que a ideia principal é definir um "gap" e ordenar as posições x, x + gap, x + gap + gap, sendo x uma posição válida do vetor.
+Escolhendo este gap = 1, por exemplo, o algoritmo fica igual ao InsertionSort.
+
+Porém, a parte mais interessante deste algoritmo é que sua complexidade depende do gap escolhido!
+Se o gap for N/2, N/4, ..., 1 sendo N = tamanho do vetor, entao o algoritmo fica O(N^2).
+Porém, se o gap escolhido for da forma 2^k+1 ou 2^k-1 a complexidade se torna O(N^(3/2))!!!
+Existem sequencias mais complexas que tornam o algoritmo até O(N^(4/3)).
+
+Segue abaixo o pseudocodigo usando o gap de N/2, N/4, ..., 1:
+
+    Entrada:
+        v: vetor de valores a serem ordenados
+        N: tamanho do vetor
+    Saída:
+        v: vetor ordenados
+
+    Para gap <- N / 2, enquanto gap > 0, gap <- gap / 2:
+
+        Para i <- gap até N:
+            aux <- v[i]
+            j <- i
+
+            Enquanto j >= gap e v[j - gap] > aux:
+                v[j] <- v[j - gap]
+                j <- j - gap
+            
+            v[j] = aux
+    
+    retorna v
+
+    

@@ -1,0 +1,23 @@
+O nome InsertionSort pode ser traduzido para ordenação por inserção.
+Este nome define muito bem o funcionamento do algoritmo. A ideia se assemelha a ordenar um baralho de cartas.
+Basicamente a cada elemento o algoritmo encontra a posição correta dele e o põem no lugar.
+Isto faz o algoritmo se tornar O(N^2), o que faz com que ele demore muito para N não muito grande.
+
+Abaixo segue o pseudocodigo do algoritmo:
+
+Entrada:
+v: vetor a ser ordenado
+n: tamanho do vetor
+
+saida: 
+v: vetor ordenado
+
+para i de 1 até n faça:
+    aux <- v[i]
+    j <- i
+    equanto j >= 0 e v[j] > aux faça:
+        v[j+1] = v[j];
+        j <- j-1
+    v[j + 1] <- aux
+
+retorna v

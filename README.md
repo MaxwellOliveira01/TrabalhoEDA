@@ -16,6 +16,7 @@ Criar um programa com duas características:
 - [x] Aprender a contar o tempo de duração de uma função
 - [x] Criar o menu de escolha dos métodos
 - [x] Formatar a apresentação dos dados impressos na tela
-- [ ] Criar o menu da seção educativa
-- [ ] Criar arquivos .txt com o texto explicativo de cada método
+- [x] Criar o menu da seção educativa
+- [x] Criar arquivos .txt com o texto explicativo de cada método
+- [ ] Executar e mostrar os resultados separamente na seção educativa
 - [ ] Criar menu principal capaz de unir as duas seções.

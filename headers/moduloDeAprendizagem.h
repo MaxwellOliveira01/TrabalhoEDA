@@ -1,1 +1,1 @@
-int ok();
+int moduloDeAprendizagem();

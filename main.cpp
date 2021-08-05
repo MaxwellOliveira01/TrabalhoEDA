@@ -5,8 +5,5 @@ using namespace std;
 #include "headers/moduloDeTestes.h"
 
 int main(){
-    cout << "Teste!" << endl;
-    int t = 0; cin >> t;
-    if(t == 1) moduloDeTestes();
-    else ok();
+    moduloDeAprendizagem();
 }

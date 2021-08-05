@@ -1,0 +1,28 @@
+O BubbleSort é um algoritmo de ordenação cuja ideia é ter um código simples.
+Porém, essa simplicidade acaba afetando muito sua performance, já que sua complexidade é O(N^2).
+Isso significa que, para uma entrada de tamanho N = 100 o merge sort pode realizar até 100 * 100 = 10000 operações.
+O que torna o algoritmo lento já para entradas de tamanho médio.
+
+Abaixo segue o pseudocódigo do algoritmo:
+
+Entrada: 
+v: vetor de valores a serem ordenados
+tam: tamanho do vetor
+
+Saída:
+v: vetor de valores ordenados
+
+Para r = tam até 0 faca:
+    fim <- 0
+    l <- 0
+    para l de 0 até r - 1 faca:
+        se v[l] > v[l+1]:
+            aux <- v[l]
+            v[l] = v[l+1];
+            v[l+1] = aux;
+            fim <- 1
+
+    se fim == 0: 
+        encerra o laço
+
+retorna v

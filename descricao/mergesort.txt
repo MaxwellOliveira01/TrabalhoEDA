@@ -1,0 +1,65 @@
+O MergeSort é um algoritmo de ordenação um pouco mais sofisticado.
+Sua ideia principal é a de "dividir para conquistar".
+O algoritmo conta com duas funções principais: o merge e o mergeSort.
+
+A função mergeSort recebe um vetor e o separa ao meio (caso ele tenha mais de um elemento).
+Após separara, o algoritmo recursivamente ordena as duas partes e usa a função merge para que elas se juntem novamente.
+
+Segue abaixo o pseudocódigo:
+
+função mergeSort:
+    
+    Entrada:
+        v: vetor de elementos a serem ordenados
+        t: tamanho do vetor
+    Saída:
+        v: vetor ordenados
+
+    Se t > 1:
+        vetor esquerda, direita
+        esquerda = v[0,1,2, ... , t/2]
+        direita = v[t/2+1, t/2+2, ..., t-1]
+        mergeSort(esquerda, t/2)
+        mergeSort(direita,  t/2)
+        retornar merge(esqueda, direita, t/2)
+
+    senao:
+        retornar v
+
+
+função merge:
+
+    Entrada:
+        esquerda: vetor ordenado
+        direita: vetor ordenado
+        n: tamanho de cada vetor
+    Saída:
+        v: junção ordenada dos vetores esquerda e direita
+    
+    vetor c
+    p <- 0
+    pEsq <- 0
+    pDIr <- 0
+
+    Enquanto pEsq < n e pDir < n:
+        Se esq[pEsq] < dir[pDir]:
+            c[p] <- esq[pEsq]
+            pEsq <- pEsq + 1
+        senão:
+            c[p] <- dir[pDir]
+            pDir <- pDir + 1
+        p <- p + 1
+
+    Enquanto pEsq < n:
+        c[p] <- esq[pEsq]
+        p <- p + 1
+        pEsq <- pEsq + 1
+
+
+    Enquanto pDir < n:
+        c[p] <- dir[pDir]
+        p <- p + 1
+        pDir <- pDir + 1
+
+    retornar c
+
