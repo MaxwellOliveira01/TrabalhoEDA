@@ -19,4 +19,4 @@ Criar um programa com duas características:
 - [x] Criar o menu da seção educativa
 - [x] Criar arquivos .txt com o texto explicativo de cada método
 - [x] Executar e mostrar os resultados separamente na seção educativa
-- [ ] Criar menu principal capaz de unir as duas seções.
+- [x] Criar menu principal capaz de unir as duas seções.
