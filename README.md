@@ -18,5 +18,5 @@ Criar um programa com duas características:
 - [x] Formatar a apresentação dos dados impressos na tela
 - [x] Criar o menu da seção educativa
 - [x] Criar arquivos .txt com o texto explicativo de cada método
-- [ ] Executar e mostrar os resultados separamente na seção educativa
+- [x] Executar e mostrar os resultados separamente na seção educativa
 - [ ] Criar menu principal capaz de unir as duas seções.

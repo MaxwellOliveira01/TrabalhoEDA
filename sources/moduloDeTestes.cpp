@@ -39,15 +39,13 @@ int moduloDeTestes(){
     {   //recebendo a quantidade de elementos
         cout << "Quantos elementos deseja utilizar? Insira um numero no intervalo [0, 30000]\n";
         cin >> N;
-        N = max(0, N); 
-        N = min(30000, N);
+        N > 30000 || N <= 0 ? N = 10 : N = N;
     }
 
     {   //recebendo a quantidade de repetições
         cout << "\nQuase tudo pronto!\nDeseja usar quantas repetições de " << N << " elemento(s) para fazer a média?\n";
         cin >> qnt;
-        qnt = max(1, qnt);
-        qnt = min(10, qnt);
+        qnt > 10 || qnt <= 0 ? qnt = 1 : qnt = qnt;
     }
 
     {   //recebendo a ordem dos valores
